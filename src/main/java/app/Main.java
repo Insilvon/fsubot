@@ -13,8 +13,8 @@ public class Main {
         String token = new TokenLoader().getToken();
         builder.setToken(token);
         builder.addEventListeners(
-                new EventHandler(),
-                new RollHandler()
+            new EventHandler(),
+            new RollHandler()
         );
         try {
             builder.build();

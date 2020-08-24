@@ -1,8 +1,11 @@
 package listeners;
 
+import net.dv8tion.jda.api.EmbedBuilder;
+import net.dv8tion.jda.api.entities.MessageEmbed;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 
+import java.awt.*;
 import java.util.Random;
 
 public class RollHandler extends ListenerAdapter {
@@ -22,8 +25,16 @@ public class RollHandler extends ListenerAdapter {
                 return;
             }
             int roll = getRandomNumber(Integer.parseInt(args[1]));
-            event.getChannel().sendMessage("You rolled a " + roll + "!").queue();
+            event.getChannel().sendMessage(getResponse(roll, event.getAuthor().getName())).queue();
         }
+    }
+
+    private MessageEmbed getResponse(int roll, String author) {
+        EmbedBuilder builder = new EmbedBuilder();
+        builder.setDescription("They got a " + roll + "!");
+        builder.setColor(Color.GREEN);
+        builder.setTitle(author + " rolls...");
+        return builder.build();
     }
 
     private int getRandomNumber(int max) {
