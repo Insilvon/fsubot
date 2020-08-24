@@ -2,6 +2,7 @@ package app;
 
 import config.TokenLoader;
 import listeners.EventHandler;
+import listeners.RollHandler;
 import net.dv8tion.jda.core.AccountType;
 import net.dv8tion.jda.core.JDABuilder;
 import javax.security.auth.login.LoginException;
@@ -12,7 +13,8 @@ public class Main {
         String token = new TokenLoader().getToken();
         builder.setToken(token);
         builder.addEventListener(
-                new EventHandler()
+                new EventHandler(),
+                new RollHandler()
         );
         try {
             builder.buildAsync();
