@@ -13,5 +13,5 @@ repositories {
 }
 
 dependencies {
-    compile 'net.dv8tion:JDA:3.5.0_329'
+    compile 'net.dv8tion:JDA:4.2.0_194'
 }
